@@ -215,7 +215,7 @@ class GoogleStorageDriver(Driver):
             # Python 3.4: 'bytes' object has no attribute 'hex'
             etag = codecs.encode(etag_bytes, "hex_codec").decode("ascii")
 
-        md5_bytes = base64.b64decode(blob.md5_hash)
+        md5_bytes = base64.b64decode(blob.md5_hash if blob.md5_hash else "")
 
         try:
             md5_hash = md5_bytes.hex()
